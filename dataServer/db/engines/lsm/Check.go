@@ -10,7 +10,6 @@ func Check() {
 	con := config.GetConfig()
 	ticker := time.Tick(time.Duration(con.CheckInterval) * time.Second)
 	for range ticker {
-		log.Println("Performing background checks...")
 		// 检查内存
 		checkMemory()
 		// 检查压缩数据库文件

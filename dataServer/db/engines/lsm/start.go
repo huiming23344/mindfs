@@ -19,8 +19,6 @@ func Start(con config.Config) {
 	log.Println("Initializing the database")
 	initDatabase(con.DataDir)
 
-	// 数据库启动前进行一次数据压缩
-	log.Println("Performing background checks...")
 	// 检查内存
 	checkMemory()
 	// 检查压缩数据库文件

@@ -1,0 +1,17 @@
+server:
+  name: raft-kv
+  port: 20004
+  cache-cap: 512
+
+raft:
+  is-voter: false
+  use-loopback: false
+  bootstrap: true
+  port: 2318
+
+lsm:
+  level0-size:  100
+  part-size:  4
+  threshold:  3000
+  check-interval: 5
+  compress-interval: 10
