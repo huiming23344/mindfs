@@ -10,7 +10,7 @@ import (
 var ServerConfigPath = defaultConfigPath
 
 const (
-	defaultConfigPath = "./dataServer.yaml"
+	defaultConfigPath = "../registry/registry.yaml"
 )
 
 // serverConfigPath 获取服务启动的配置文件
@@ -24,30 +24,8 @@ func serverConfigPath() string {
 
 type Config struct {
 	Server struct {
-		ServiceName string `yaml:"name"`
-		Port        int    `yaml:"port"`
-		CacheCap    int    `yaml:"cache-cap"`
-	}
-
-	Registry struct {
-		Address string `yaml:"address"`
-		Port    int    `yaml:"port"`
-	}
-
-	Raft struct {
-		Voter       bool   `yaml:"is-voter"`
-		Port        string `yaml:"port"`
-		UseLoopBack bool   `yaml:"use-loopback"`
-		Bootstrap   bool   `yaml:"bootstrap"`
-	}
-
-	Lsm struct {
-		DataDir          string `yaml:"data-dir"`
-		Level0Size       int    `yaml:"level0-size"`
-		PartSize         int    `yaml:"part-size"`
-		Threshold        int    `yaml:"threshold"`
-		CheckInterval    int    `yaml:"check-interval"`
-		CompressInterval int    `yaml:"compress-interval"`
+		Port             int `yaml:"port"`
+		HeartBeatTimeout int `yaml:"heartBeatTimeout"`
 	}
 }
 

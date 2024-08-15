@@ -2,16 +2,24 @@ package server
 
 import (
 	"fmt"
+	"github.com/google/uuid"
 	"github.com/huiming23344/mindfs/dataServer/config"
 	"github.com/huiming23344/mindfs/dataServer/db"
 	"net"
 )
 
+type Registry struct {
+	Address string `yaml:"address"`
+	Port    int    `yaml:"port"`
+}
+
 type dataServer struct {
-	serviceName string
-	addr        string
-	port        int
+	ServiceName string
+	ServiceId   string
+	Addr        string
+	Port        int
 	db          db.DB
+	Registry    Registry
 }
 
 var DataServer dataServer
@@ -27,11 +35,17 @@ func InitServer() {
 	if err != nil {
 		return
 	}
+	serviceId := uuid.New().String()
 	DataServer = dataServer{
-		serviceName: cfg.Server.ServiceName,
-		addr:        addrs[len(addrs)-1],
-		port:        cfg.Server.Port,
+		ServiceName: cfg.Server.ServiceName,
+		ServiceId:   serviceId,
+		Addr:        addrs[len(addrs)-1],
+		Port:        cfg.Server.Port,
 		db:          DB,
+		Registry: Registry{
+			Address: cfg.Registry.Address,
+			Port:    cfg.Registry.Port,
+		},
 	}
 }
 

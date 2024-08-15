@@ -1,7 +1,8 @@
 package engines
 
 import (
-	errs "github.com/huiming23344/mindfs/dataServer/errors"
+	"errors"
+	. "github.com/smartystreets/goconvey/convey"
 	"os"
 	"testing"
 )
@@ -33,6 +34,6 @@ func Test_LsmStore(t *testing.T) {
 			t.Fatal(err)
 		}
 		_, err = engine.Get("name")
-		So(err, ShouldResemble, errs.KeyNotFound)
+		So(err, ShouldResemble, errors.New("key not found"))
 	})
 }

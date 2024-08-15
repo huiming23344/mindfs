@@ -3,6 +3,10 @@ server:
   port: 20004
   cache-cap: 512
 
+registry:
+  address: 127.0.0.1
+  port: 8180
+
 raft:
   is-voter: false
   use-loopback: false
