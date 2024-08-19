@@ -12,7 +12,7 @@ type Chunk struct {
 	Id     string
 	Len    int
 	hash   []byte
-	server *dataServer
+	server *DataServer
 }
 
 type Status struct {

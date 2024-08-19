@@ -1,7 +1,7 @@
 package meta
 
 type User struct {
-	Username string
+	Name     string
 	Password string
 }
 

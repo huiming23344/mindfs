@@ -22,6 +22,7 @@ type metaServer struct {
 	Users       map[string]*meta.User
 	Groups      map[string]*meta.UserGroup
 	Dir         *meta.Directory
+	Servers     map[string]*meta.DataServer
 }
 
 var MetaServer metaServer
@@ -43,9 +44,10 @@ func InitServer() {
 			Address: cfg.Registry.Address,
 			Port:    cfg.Registry.Port,
 		},
-		Users:  make(map[string]*meta.User),
-		Groups: make(map[string]*meta.UserGroup),
-		Dir:    meta.NewDirectory("/"),
+		Users:   make(map[string]*meta.User),
+		Groups:  make(map[string]*meta.UserGroup),
+		Dir:     meta.NewDirectory("/"),
+		Servers: make(map[string]*meta.DataServer),
 	}
 	AddUser("admin", "admin")
 }
@@ -85,7 +87,7 @@ func AddUser(username, password string) error {
 		return fmt.Errorf("user '%s' already exists", username)
 	}
 	MetaServer.Users[username] = &meta.User{
-		Username: username,
+		Name:     username,
 		Password: password,
 	}
 	return nil
@@ -144,7 +146,7 @@ func RemoveUserFromGroup(username, groupName string) error {
 		return fmt.Errorf("group '%s' not exists", groupName)
 	}
 	for i, user := range group.Users {
-		if user.Username == username {
+		if user.Name == username {
 			group.Users = append(group.Users[:i], group.Users[i+1:]...)
 			return nil
 		}
