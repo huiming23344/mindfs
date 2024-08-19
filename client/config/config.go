@@ -2,7 +2,6 @@ package config
 
 import (
 	"flag"
-	"gopkg.in/yaml.v3"
 	"os"
 	"sync/atomic"
 )
@@ -34,20 +33,8 @@ type Config struct {
 		Port    int    `yaml:"port"`
 	}
 
-	Raft struct {
-		Voter       bool   `yaml:"is-voter"`
-		Port        string `yaml:"port"`
-		UseLoopBack bool   `yaml:"use-loopback"`
-		Bootstrap   bool   `yaml:"bootstrap"`
-	}
-
-	Lsm struct {
-		DataDir          string `yaml:"data-dir"`
-		Level0Size       int    `yaml:"level0-size"`
-		PartSize         int    `yaml:"part-size"`
-		Threshold        int    `yaml:"threshold"`
-		CheckInterval    int    `yaml:"check-interval"`
-		CompressInterval int    `yaml:"compress-interval"`
+	Fs struct {
+		chunkSize int `yaml:"chunk-size"`
 	}
 }
 

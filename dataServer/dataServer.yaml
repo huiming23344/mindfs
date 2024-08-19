@@ -7,12 +7,6 @@ registry:
   address: 127.0.0.1
   port: 8180
 
-raft:
-  is-voter: false
-  use-loopback: false
-  bootstrap: true
-  port: 2318
-
 lsm:
   level0-size:  100
   part-size:  4
