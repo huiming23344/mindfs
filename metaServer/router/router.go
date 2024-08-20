@@ -12,15 +12,20 @@ func InitRouter() *gin.Engine {
 
 	r.Use(gin.Recovery())
 
-	dataSrvApi := r.Group("/user")
+	userApi := r.Group("/user")
 	{
-		dataSrvApi.POST("/add", v1.AddUser)
-		dataSrvApi.POST("/delete/:name", v1.DeleteUser)
-		dataSrvApi.GET("/list", v1.ListUser)
-		dataSrvApi.POST("/group/add", v1.AddGroup)
-		dataSrvApi.POST("/group/delete/:name", v1.DeleteGroup)
-		dataSrvApi.POST("/group/addUser", v1.AddUserToGroup)
-		dataSrvApi.POST("/group/deleteUser", v1.RemoveUserFromGroup)
+		userApi.POST("/add", v1.AddUser)
+		userApi.POST("/delete/:name", v1.DeleteUser)
+		userApi.GET("/list", v1.ListUser)
+		userApi.POST("/group/add", v1.AddGroup)
+		userApi.POST("/group/delete/:name", v1.DeleteGroup)
+		userApi.POST("/group/addUser", v1.AddUserToGroup)
+		userApi.POST("/group/deleteUser", v1.RemoveUserFromGroup)
 	}
+	dataSrvApi := r.Group("/dataServer")
+	{
+		dataSrvApi.POST("/invalid", v1.Invalid)
+	}
+
 	return r
 }
