@@ -1,0 +1,7 @@
+server:
+  name: metaServer
+  port: 20004
+
+registry:
+  address: 127.0.0.1
+  port: 8180

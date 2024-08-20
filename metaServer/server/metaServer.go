@@ -21,7 +21,7 @@ type metaServer struct {
 	Registry    Registry
 	Users       map[string]*meta.User
 	Groups      map[string]*meta.UserGroup
-	Dir         *meta.Directory
+	FileSys     map[string]*meta.Directory
 	Servers     map[string]*meta.DataServer
 }
 
@@ -46,9 +46,10 @@ func InitServer() {
 		},
 		Users:   make(map[string]*meta.User),
 		Groups:  make(map[string]*meta.UserGroup),
-		Dir:     meta.NewDirectory("/"),
+		FileSys: make(map[string]*meta.Directory),
 		Servers: make(map[string]*meta.DataServer),
 	}
+
 	AddUser("admin", "admin")
 }
 
@@ -152,4 +153,8 @@ func RemoveUserFromGroup(username, groupName string) error {
 		}
 	}
 	return fmt.Errorf("user '%s' not in group '%s'", username, groupName)
+}
+
+func AddFileSys(name string) {
+	MetaServer.FileSys[name] = meta.NewDirectory("/")
 }

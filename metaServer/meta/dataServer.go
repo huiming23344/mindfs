@@ -1,6 +1,6 @@
 package meta
 
-type dataServer struct {
+type DataServer struct {
 	Id     string
 	Ip     string
 	Port   int

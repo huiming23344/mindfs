@@ -22,7 +22,7 @@ func serverConfigPath() string {
 }
 
 type Config struct {
-	Server struct {
+	Client struct {
 		ServiceName string `yaml:"name"`
 		Port        int    `yaml:"port"`
 		CacheCap    int    `yaml:"cache-cap"`

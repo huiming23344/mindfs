@@ -15,8 +15,12 @@ func TestDirectory_AddDir(t *testing.T) {
 	home.AddDir("user")
 	home.AddDir("admin")
 
+	user, err := root.FindDir("home/user")
+	if err != nil {
+		t.Fatal(err)
+	}
 	// 在 user 目录下添加文件
-	user, _ := home.FindDir("user")
+	user, _ = home.FindDir("user")
 	user.AddFile("example.txt")
 
 	// 打印整个文件系统结构
