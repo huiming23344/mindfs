@@ -2,6 +2,7 @@ package config
 
 import (
 	"flag"
+	"gopkg.in/yaml.v3"
 	"os"
 	"sync/atomic"
 )

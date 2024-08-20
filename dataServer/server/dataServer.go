@@ -65,6 +65,14 @@ func Read(key string) (string, error) {
 	return data, nil
 }
 
+func Delete(key string) error {
+	err := DataServer.db.Remove(key)
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
 func getHostIPAddresses() ([]string, error) {
 	var addresses []string
 

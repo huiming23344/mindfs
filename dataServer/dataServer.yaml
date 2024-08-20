@@ -2,6 +2,7 @@ server:
   name: raft-kv
   port: 20004
   cache-cap: 512
+  block-cap: 102400
 
 registry:
   address: 127.0.0.1

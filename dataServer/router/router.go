@@ -16,6 +16,7 @@ func InitRouter() *gin.Engine {
 	dataSrvApi.POST("/writeData", v1.WriteData)
 	dataSrvApi.GET("/readData", v1.ReadData)
 	dataSrvApi.POST("/updateData", v1.UpdateData)
-	dataSrvApi.GET("/deleteData", v1.DeleteData)
+	dataSrvApi.DELETE("/deleteData", v1.DeleteData)
+	dataSrvApi.POST("/copyData", v1.CopyData)
 	return r
 }
