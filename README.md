@@ -1,3 +1,21 @@
 # mindfs
 
-一个有最基础文件操作的分布式文件系统
+English | [中文](README_CN.md)
+
+## Introduction
+
+A distributed file system with basic file operations.
+
+![mindfs](./docs/media/mindfs.svg)
+
+## Features
+### LSM-tree
+
+### Raft
+
+
+## BenchMark
+
+## Running
+
+## Reference
